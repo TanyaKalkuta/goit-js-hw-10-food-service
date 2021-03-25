@@ -1,12 +1,11 @@
 import './styles.css';
-//import './template/template'
-// import menuList from './menu.json'
 
-// const menuItem = menuList[0];
-// const menuRef = document.querySelector('.js-menu');
+import menuListTemplate from './template/template.hbs';
+import menuList from './menu.json';
 
-// console.log(menuItem);
-// console.log(menuRef);
-// menuRef.insertAdjacentHTML('beforeend', menuItem);
+const menuRef = document.querySelector('.js-menu');
 
-console.log(qweqwe);
+const createmenuListMarkup = menuListTemplate(menuList);
+menuRef.insertAdjacentHTML('beforeend',  createmenuListMarkup);
+
+
