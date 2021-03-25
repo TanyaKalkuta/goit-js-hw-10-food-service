@@ -1,4 +1,4 @@
-// import './styles.css';
+import './styles.css';
 //import './template/template'
 // import menuList from './menu.json'
 
