@@ -25,11 +25,14 @@ bodyRef.classList.add(LIGHT)
 
 checkRef.addEventListener('change', changeClass)
 
+const valueThem = (localStorage.getItem('Theme'));
+
 function changeClass  ()  {
     if (bodyRef.classList.contains(LIGHT)) {
         bodyRef.classList.remove(LIGHT);
         bodyRef.classList.add(DARK);
         localStorage.setItem('Theme', DARK);
+        checkRef.setAttribute('checked', true)
     }
     else {
         bodyRef.classList.remove(DARK);
@@ -39,34 +42,36 @@ function changeClass  ()  {
     };
 
 }
+if (valueThem === Theme.DARK) {
+        bodyRef.classList.remove(LIGHT);
+        bodyRef.classList.add(DARK);
+        localStorage.setItem('Theme', DARK);
+        checkRef.setAttribute('checked', true)
+}
+    
 
-
-  if (localStorage.getItem('Theme')) {
-     bodyRef.classList.add(localStorage.getItem('Theme'));
- }
+// 1й вариант:
+// if (localStorage.getItem('Theme')) {
+//      bodyRef.classList.add(localStorage.getItem('Theme'));
+//  }
   
+// if (bodyRef.classList.contains(Theme.DARK)) {
+//         bodyRef.classList.remove(LIGHT);
+//         bodyRef.classList.add(DARK);
+//         localStorage.setItem('Theme', DARK);
+//         checkRef.setAttribute('checked', true)
+// }
+    
+//2й вариант:
+// if (localStorage.getItem('Theme') === DARK) {
+//         bodyRef.classList.remove(LIGHT);
+//         bodyRef.classList.add(DARK);
+//         localStorage.setItem('Theme', DARK);
+//         checkRef.setAttribute('checked', true)
+//     }
 
-//1й вариант---после перезагрузки чекбокс в ПРАВИЛЬНОМ положении, но 
-//   следующий раз передвигая, он тему не меняет, а начиная на 2й клик начинает менять неправильно
-
-if (bodyRef.classList.contains(Theme.DARK)) {
-  //  checkRef.checked = true;
-   checkRef.setAttribute('checked', true)
-};
-
-
-
- //2й вариант---после перезагрузки чекбокс в НЕПРАВИЛЬНОМ положении, но 
-//   следующий раз передвигая, он тему неменяет, а начиная на 2й клик  начинает менять правильно
-//if (valueThem === Theme.DARK) {
-   // checkRef.checked = true;
-   //checkRef.setAttribute('checked', true)
-//}
-
-const valueThem = (localStorage.getItem('Theme'));
-let y = checkRef.checked
-console.log(y);
-
-console.log(valueThem);
+// let y = checkRef.checked
+// console.log(y);
+//  console.log(valueThem);
 
 
