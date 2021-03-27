@@ -10,7 +10,6 @@ const checkRef = document.querySelector('#theme-switch-toggle');
 const createmenuListMarkup = menuListTemplate(menuList);
 menuRef.insertAdjacentHTML('beforeend',  createmenuListMarkup);
 
-
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
@@ -20,34 +19,39 @@ const { LIGHT, DARK } = Theme;
 
 bodyRef.classList.add(LIGHT)
 
-
-
-
-checkRef.addEventListener('change', changeClass)
+checkRef.addEventListener('change', changeCheckbox)
 
 const valueThem = (localStorage.getItem('Theme'));
 
-function changeClass  ()  {
+
+function changeClass (newClass, oldClass) {
+  bodyRef.classList.remove(oldClass);
+  bodyRef.classList.add(newClass);
+};
+
+const onDarkThem = () => {
+    changeClass(DARK, LIGHT);
+    localStorage.setItem('Theme', DARK);
+    checkRef.setAttribute('checked', true)
+};
+
+const onLightThem = () => {
+    changeClass(LIGHT, DARK);
+    localStorage.setItem('Theme', LIGHT);
+ };
+
+function changeCheckbox  ()  {
     if (bodyRef.classList.contains(LIGHT)) {
-        bodyRef.classList.remove(LIGHT);
-        bodyRef.classList.add(DARK);
-        localStorage.setItem('Theme', DARK);
-        checkRef.setAttribute('checked', true)
+    onDarkThem();
     }
     else {
-        bodyRef.classList.remove(DARK);
-        bodyRef.classList.add(LIGHT);
-        localStorage.setItem('Theme', LIGHT);
-        
+        onLightThem();
     };
 
 }
 if (valueThem === Theme.DARK) {
-        bodyRef.classList.remove(LIGHT);
-        bodyRef.classList.add(DARK);
-        localStorage.setItem('Theme', DARK);
-        checkRef.setAttribute('checked', true)
-}
+    onDarkThem();
+};
     
 
 // 1й вариант:
